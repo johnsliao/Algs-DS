@@ -1,4 +1,4 @@
-# C++-Algorithms
+# C++ Algorithms
 Implementation of various algorithms and data structures in C++
 
 Feel free to add more implementations!
