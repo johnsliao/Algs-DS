@@ -27,7 +27,7 @@ Each implementation is done in Xcode playground. To view code, either:
 
 [Stack](Data%20Structures/stacks/stacks)
 
-[Queue (soon)](/)
+[Queue](Data%20Structures/Queues)
 
 [Hash Table (chaining with linked lists)](Data%20Structures/hash%20tables/hash%20tables)
 
