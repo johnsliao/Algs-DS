@@ -28,8 +28,8 @@ Each implementation is done in Xcode playground. To view code, either:
 
 [Queue](Data%20Structures/Queues/Queues)
 
-[Hash Table (chaining with linked lists)](Data%20Structures/hash%20tables/hash%20tables)
+[Hash Table [chaining with linked lists]](Data%20Structures/hash%20tables/hash%20tables)
 
-[Binary Tree (soon)](/)
+[Binary Tree](Data%20Structures/binary%20tree/binary%20tree)
 
 [Graphs (soon)](/)
