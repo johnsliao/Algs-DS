@@ -1,3 +1,0 @@
-[submodule "quick-sort"]
-	path = quick-sort
-	url = https://github.com/johnsliao/quick-sort.git
