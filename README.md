@@ -14,7 +14,7 @@ Each implementation is done in Xcode playground. To view code, either:
 
 [Insertion Sort](https://github.com/johnsliao/insertion-and-selection-sort/tree/master/insertion%20selection%20sort/insertion%20selection%20sort)
 
-[Selection Sort)](https://github.com/johnsliao/insertion-and-selection-sort/tree/master/insertion%20selection%20sort/insertion%20selection%20sort)
+[Selection Sort](https://github.com/johnsliao/insertion-and-selection-sort/tree/master/insertion%20selection%20sort/insertion%20selection%20sort)
 
 [Quick Sort](Algorithms/quick%20sort)
 
