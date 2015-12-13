@@ -1,0 +1,3 @@
+[submodule "Algorithms/insertion-and-selection-sort"]
+	path = Algorithms/insertion-and-selection-sort
+	url = https://github.com/johnsliao/insertion-and-selection-sort.git
