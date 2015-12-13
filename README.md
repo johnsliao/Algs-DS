@@ -33,3 +33,9 @@ Each implementation is done in Xcode playground. To view code, either:
 [Binary Tree](Data%20Structures/binary%20tree/binary%20tree)
 
 [Graphs (soon)](/)
+
+<h2> Misc </h3>
+
+[Templates] (/Misc/templates/templates)
+
+[Polymorphism & Inheritance (soon)](/)
