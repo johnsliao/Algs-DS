@@ -10,7 +10,7 @@ Each implementation is done in Xcode playground. To view code, either:
 2. Click the link below to view the .cpp file (on Github)
 
 <h2>Algorithms</h2>
-[Bubble Sort (soon)](/)
+[Bubble Sort](Algorithms/bubble-sort/mybubblesort)
 
 [Insertion Sort (soon)](/)
 
@@ -18,16 +18,18 @@ Each implementation is done in Xcode playground. To view code, either:
 
 [Merge Sort (soon)](/)
 
+[Quick Sort](Algorithms/quick%20sort)
+
 [Heap Sort (soon)](/)
 
 <h2>Data Structures</h2>
 [Linked List (soon)](/)
 
-[Stack (soon)](/)
+[Stack](Data%20Structures/stacks/stacks)
 
 [Queue (soon)](/)
 
-[Hash Table (chaining with linked lists) (soon)](/)
+[Hash Table (chaining with linked lists)](Data%20Structures/hash%20tables/hash%20tables)
 
 [Binary Tree (soon)](/)
 
