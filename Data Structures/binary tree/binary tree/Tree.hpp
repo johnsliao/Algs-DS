@@ -16,7 +16,7 @@ class Tree {
 public:
     void add(int val);
     void print(Node *temp);
-    void search(int val, Node *temp);
+    Node *search(int val, Node *temp);
     void del(int val);
     Node *getRoot();
 private:

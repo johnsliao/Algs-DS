@@ -22,7 +22,12 @@ int main(int argc, const char * argv[]) {
     
     T.print(T.getRoot());
     
-    T.search(3, T.getRoot());
+    int searchVal = 4;
+    
+    if(T.search(searchVal, T.getRoot())==nullptr)
+        std::cout << searchVal << " not found" << std::endl;
+    else
+        std::cout << "Found " << searchVal << std::endl;
     
     return 0;
 }

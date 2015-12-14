@@ -61,16 +61,28 @@ void Tree::print(Node *temp) { // recursive print
     print(temp->getRight());
 }
 
-void Tree::search(int val, Node *temp) {
-    if (temp==nullptr)
-        return;
+/*Node *Tree::search(int val) { // iterative
+    Node *temp = root;
     
-    if (val==temp->getVal())
-        std::cout << "Found " << val << std::endl;
+    while (temp!=nullptr) {
+        if (temp->getVal()==val)
+            return temp;
+        else if (val<temp->getVal())
+            temp=temp->getLeft();
+        else
+            temp=temp->getRight();
+    }
     
-    search(val,temp->getLeft());
-    search(val,temp->getRight());
-    
+    return temp;
+}*/
+
+Node *Tree::search(int val, Node *temp) { // recursive
+    if (temp == nullptr || temp->getVal() == val)
+        return temp;
+    else if (val<temp->getVal())
+        return search(val, temp->getLeft());
+    else
+        return search(val, temp->getRight());
 }
 
 void Tree::del(int val) {
