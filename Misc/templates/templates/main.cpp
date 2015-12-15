@@ -6,21 +6,24 @@
 //  Copyright © 2015 John Liao. All rights reserved.
 //
 
-#include <iostream>
+// Stacks ADT using templates
 
-template <typename P>
-P compare(P a, P b) {
-    if (a>b)
-        return a;
-    else
-        return b;
-}
+#include <iostream>
+#include "Stack.hpp"
+#include "Node.hpp"
 
 int main() {
-    //float a=3.1, b=3.5;
-    int a=3, b=4;
+    Stack<int> s;
     
-    std::cout << "Comparing " << a << " and " << b << std::endl;
-    std::cout << compare(a,b) << " is greater!" << std:: endl;
+    s.push(1);
+    s.push(2);
+    s.push(3);
+    s.push(4);
+    s.push(5);
+    
+    s.print();
+    
+    s.peek();
+    
     return 0;
 }
