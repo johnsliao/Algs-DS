@@ -54,11 +54,12 @@ void Tree::print(Node *temp) { // recursive print
     if (temp==nullptr) { // root is null
         return;
     }
-    
-    std::cout << temp->getVal() << std::endl;
-    
+    //std::cout << temp->getVal() << std::endl; // pre-order traversal
     print(temp->getLeft());
+    //std::cout << temp->getVal() << std::endl; // in-order traversal
     print(temp->getRight());
+    std::cout << temp->getVal() << std::endl; // post-order traversal
+    
 }
 
 /*Node *Tree::search(int val) { // iterative
