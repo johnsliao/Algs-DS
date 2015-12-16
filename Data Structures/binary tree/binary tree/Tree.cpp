@@ -87,5 +87,38 @@ Node *Tree::search(int val, Node *temp) { // recursive
 }
 
 void Tree::del(int val) {
-    // to be implemented
+    Node *temp = search(val, root);
+    
+    if (temp == nullptr)
+        std::cout << "Could not find " << val << std::endl;
+    else if (temp->getLeft() == nullptr && temp->getRight() == nullptr) { // Leaf Node to Delete
+        temp=nullptr;
+        delete temp;
+    }
+    else if (temp->getLeft() != nullptr &&  temp->getRight() !=nullptr) { // two children
+        
+    }
+    else { // remaining case -- one child
+        if (temp->getLeft() != nullptr) {
+            temp = temp->getLeft();
+        } else {
+            temp = temp->getRight();
+        }
+    }
+}
+
+int Tree::countNodes(Node *node) {
+    if (node==nullptr)
+        return 0;
+    else
+        return 1+countNodes(node->getLeft())+countNodes(node->getRight());
+    
+}
+
+bool Tree::isBST(int minKey, int maxKey, Node *node) {
+    if (node == nullptr)
+        return true;
+    if (node->getVal()<minKey || node->getVal()>maxKey)
+        return false;
+    return isBST(minKey, node->getVal(), node->getLeft()) && isBST(node->getVal(), maxKey, node->getRight());
 }
