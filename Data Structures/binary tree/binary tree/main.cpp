@@ -41,7 +41,7 @@ int main(int argc, const char * argv[]) {
     
     // Delete
     std::cout << "Delete!" << std::endl;
-    T.del(1);
+    T.del(1, T.getRoot(), T.getRoot());
     
     T.print(T.getRoot());
     
