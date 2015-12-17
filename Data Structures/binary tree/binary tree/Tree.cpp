@@ -27,6 +27,7 @@ void Tree::add(int val) {
     
     // assumes no children node val equal to parent
     // iterative solution
+
     while(!added) {
         // Check with current val, if < go left; if > go right
         if (val<temp->getVal()) {
@@ -39,7 +40,7 @@ void Tree::add(int val) {
             }
         }
         else if (val>temp->getVal()) {
-            if (temp->getLeft()!=nullptr) {
+            if (temp->getRight()!=nullptr) {
                 temp = temp->getRight();
             }
             else {
@@ -51,14 +52,16 @@ void Tree::add(int val) {
 }
 
 void Tree::print(Node *temp) { // recursive print
+    
+    
     if (temp==nullptr) { // root is null
         return;
     }
     //std::cout << temp->getVal() << std::endl; // pre-order traversal
     print(temp->getLeft());
-    //std::cout << temp->getVal() << std::endl; // in-order traversal
+    std::cout << temp->getVal() << std::endl; // in-order traversal
     print(temp->getRight());
-    std::cout << temp->getVal() << std::endl; // post-order traversal
+    //std::cout << temp->getVal() << std::endl; // post-order traversal
     
 }
 
@@ -86,7 +89,16 @@ Node *Tree::search(int val, Node *temp) { // recursive
         return search(val, temp->getRight());
 }
 
+Node *Tree::findMin(Node *node) {
+    if (node->getLeft()==nullptr)
+        return node;
+    
+    return findMin(node->getLeft());
+}
+
+
 void Tree::del(int val, Node *node, Node *parent) {
+    
     if (val<node->getVal())
         del(val,node->getLeft(), node);
     else if (val>node->getVal())
@@ -99,15 +111,22 @@ void Tree::del(int val, Node *node, Node *parent) {
                 parent->setLeft(nullptr);
             
             delete node;
-        }
-        else if (node->getLeft() == nullptr) { // left only
             
         }
-        else if (node->getRight() == nullptr) { // right only
-            
+        else if (node->getLeft() == nullptr) { // left is null
+            node->setVal(node->getRight()->getVal());
+            delete node->getRight();
+            node->setRight(nullptr);
         }
-        else { //two children
-            
+        else if (node->getRight() == nullptr) { // right is null
+            node->setVal(node->getLeft()->getVal());
+            delete node->getLeft();
+            node->setLeft(nullptr);
+        }
+        else { // 2 children
+            Node * min = findMin(node->getRight());
+            del(min->getVal(), root, root);
+            node->setVal(min->getVal());
         }
     }
     

@@ -19,6 +19,7 @@ public:
     Node *search(int val, Node *temp);
     void del(int val, Node *node, Node *parent);
     Node *getRoot();
+    Node *findMin(Node * node);
     int countNodes(Node *node);
     bool isBST(int minKey, int maxKey, Node *node);
 private:
