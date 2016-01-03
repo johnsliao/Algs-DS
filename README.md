@@ -32,7 +32,7 @@ Each implementation is done in Xcode playground. To view code, either:
 
 [Binary Tree](Data%20Structures/binary%20tree/binary%20tree)
 
-[Graphs (soon)](/)
+[Graphs](Data%20Structures/graphs/graphs)
 
 <h2> Misc </h3>
 
