@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <stack>
 
 #include "Node.hpp"
 
@@ -25,27 +26,14 @@ struct Graph {
     }
     
     void link(char from, char to) {
-        Node *from_node = nullptr;
-        Node *to_node = nullptr;
+        Vmap::iterator from_itr = find_if(vmap.begin(), vmap.end(), [from](Node* node){return node->getVal()==from;});
+        Vmap::iterator to_itr = find_if(vmap.begin(), vmap.end(), [to](Node* node){return node->getVal()==to;});
+
         
-        bool found_from = false;
-        bool found_to = false;
-        
-        for(Vmap::iterator i = vmap.begin(); i!=vmap.end(); i++) {
-            if((*i)->getVal()==from) { // found from Node in list
-                from_node = *i;
-                found_from = true;
-            }
-            if((*i)->getVal()==to) { // found from Node in list
-                to_node = *i;
-                found_to = true;
-            }
-        }
-        
-        if (found_from && found_to) { // add link to both nodes as an undirected graph
+        if (from_itr!=vmap.end() && to_itr!=vmap.end()) { // add link to both nodes as an undirected graph
             cout << "Found both. Connecting "<< from << " to " << to << "..." << endl;
-            from_node->adj.push_back(to_node);
-            to_node->adj.push_back(from_node);
+            (*from_itr)->adj.push_back(*to_itr);
+            (*to_itr)->adj.push_back(*from_itr);
         }
         else {
             cout << "Did not find "<< from << " and " << to << "." << endl;
@@ -53,14 +41,52 @@ struct Graph {
     }
     
     void printAdj(char val) {
-        for(Vmap::iterator i = vmap.begin(); i!=vmap.end(); i++) {
-            if((*i)->getVal()==val) { // found from Node in list
-                (*i)->printAdj();
-                return;
-            }
+        Vmap::iterator itr = find_if(vmap.begin(), vmap.end(), [val](Node* node){return node->getVal()==val;});
+        
+        if(itr!=vmap.end()) {
+            (*itr)->printAdj();
+            return;
         }
+        
         cout << "Could not find " << val << " in graph." << endl;
     }
+    
+    // DFS Iterative
+    void DFS_iterative() {
+        stack<Node*> path;
+        vector<Node*> seen;
+        
+        Node::adj_list::iterator adj_itr;
+        
+        path.push(vmap.front());
+        seen.push_back(vmap.front());
+        
+        cout << vmap.front()->getVal() << " ";
+        
+        while(!path.empty()) {
+            Node * current_node = path.top();
+            
+            for(adj_itr=current_node->adj.begin(); adj_itr!=current_node->adj.end(); adj_itr++) {
+                Vmap::iterator seen_itr = find(seen.begin(), seen.end(), *adj_itr); // search adj in seen
+                
+                if(seen_itr==seen.end()) { // if adj Node not in seen
+                    cout << (*adj_itr)->getVal() << " ";
+                    path.push(*adj_itr);
+                    seen.push_back(*adj_itr); // add to seen
+                    break;
+                }
+            }
+            if(adj_itr==current_node->adj.end()) { // if all seen, move back
+                path.pop();
+            }
+        }
+        cout << endl;
+    }
+    
+    // DFS Recursive
+    
+    
+    // BFS
     
 };
 

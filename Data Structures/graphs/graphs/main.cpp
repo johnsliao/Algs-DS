@@ -25,6 +25,7 @@ int main(int argc, const char * argv[]) {
     
     g.link('a','z');
     g.link('a','s');
+    g.link('s','x');
     g.link('x','d');
     g.link('x','c');
     g.link('d','c');
@@ -34,6 +35,8 @@ int main(int argc, const char * argv[]) {
     g.link('c','v');
     
     g.printAdj('a');
+    
+    g.DFS_iterative();
     
     return 0;
 }
