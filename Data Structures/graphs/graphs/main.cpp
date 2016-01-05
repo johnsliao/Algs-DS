@@ -36,7 +36,9 @@ int main(int argc, const char * argv[]) {
     
     g.printAdj('a');
     
-    g.DFS_iterative();
+    g.DFS_iterative(g.vmap.front());
+    
+    g.DFS_recursive(g.vmap.front());
     
     return 0;
 }

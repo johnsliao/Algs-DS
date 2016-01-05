@@ -14,6 +14,7 @@ using namespace std;
 struct Graph {
     typedef vector<Node*> Vmap;
     Vmap vmap;
+    Vmap seen;
     
     void add_vector(Node *v) {
         vmap.push_back(v);
@@ -52,16 +53,14 @@ struct Graph {
     }
     
     // DFS Iterative
-    void DFS_iterative() {
+    void DFS_iterative(Node * v) {
         stack<Node*> path;
-        vector<Node*> seen;
-        
         Node::adj_list::iterator adj_itr;
         
-        path.push(vmap.front());
-        seen.push_back(vmap.front());
+        path.push(v);
+        seen.push_back(v);
         
-        cout << vmap.front()->getVal() << " ";
+        cout << v->getVal() << " ";
         
         while(!path.empty()) {
             Node * current_node = path.top();
@@ -80,11 +79,24 @@ struct Graph {
                 path.pop();
             }
         }
+        seen.clear();
         cout << endl;
     }
     
     // DFS Recursive
-    
+    void DFS_recursive(Node *current_node) {
+        Node::adj_list::iterator adj_itr;
+        
+        for(adj_itr=current_node->adj.begin(); adj_itr!=current_node->adj.end(); adj_itr++) {
+            Vmap::iterator seen_itr = find(seen.begin(), seen.end(), *adj_itr); // search adj in seen
+            
+            if(seen_itr==seen.end()) { // if adj Node not in seen
+                cout << (*adj_itr)->getVal() << " ";
+                seen.push_back(*adj_itr); // add to seen
+                DFS_recursive(*adj_itr);
+            }
+        }
+    }
     
     // BFS
     
