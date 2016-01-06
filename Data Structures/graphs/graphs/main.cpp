@@ -20,25 +20,22 @@ int main(int argc, const char * argv[]) {
     g.add_vector(new Node('c'));
     g.add_vector(new Node('f'));
     g.add_vector(new Node('v'));
-    
-    g.print_vectors();
+    g.add_vector(new Node('q'));
     
     g.link('a','z');
-    g.link('a','s');
-    g.link('s','x');
-    g.link('x','d');
-    g.link('x','c');
-    g.link('d','c');
-    g.link('d','f');
+    g.link('z','s');
+    g.link('z','x');
+    g.link('z','d');
+    g.link('a','c');
     g.link('c','f');
-    g.link('f','v');
     g.link('c','v');
+    g.link('c','q');
     
-    g.printAdj('a');
+    //g.DFS_iterative(g.vmap.front());
     
-    g.DFS_iterative(g.vmap.front());
+    //g.DFS_recursive(g.vmap.front());
     
-    g.DFS_recursive(g.vmap.front());
+    g.BFS(g.vmap.front());
     
     return 0;
 }
