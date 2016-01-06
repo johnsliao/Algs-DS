@@ -11,6 +11,7 @@ struct Node {
     char val;
     typedef vector<Node*> adj_list;
     adj_list adj;
+    bool seen=false;
     
     Node(char val) {
         this->val=val;
