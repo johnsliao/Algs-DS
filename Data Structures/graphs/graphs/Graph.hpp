@@ -14,7 +14,6 @@ using namespace std;
 struct Graph {
     typedef vector<Node*> Vmap;
     Vmap vmap;
-    Vmap seen;
     
     void add_vector(Node *v) {
         vmap.push_back(v);
@@ -56,49 +55,63 @@ struct Graph {
     void DFS_iterative(Node * v) {
         stack<Node*> path;
         Node::adj_list::iterator adj_itr;
+        Node * current_node = nullptr;
         
         path.push(v);
-        seen.push_back(v);
-        
-        cout << v->getVal() << " ";
         
         while(!path.empty()) {
-            Node * current_node = path.top();
+            current_node = path.top();
+            path.pop();
             
-            for(adj_itr=current_node->adj.begin(); adj_itr!=current_node->adj.end(); adj_itr++) {
-                Vmap::iterator seen_itr = find(seen.begin(), seen.end(), *adj_itr); // search adj in seen
+            if(current_node->seen==false) {
+                cout << current_node->getVal() << " ";
+                current_node->seen=true;
                 
-                if(seen_itr==seen.end()) { // if adj Node not in seen
-                    cout << (*adj_itr)->getVal() << " ";
+                for(adj_itr=current_node->adj.begin(); adj_itr!=current_node->adj.end(); adj_itr++) {
                     path.push(*adj_itr);
-                    seen.push_back(*adj_itr); // add to seen
-                    break;
                 }
             }
-            if(adj_itr==current_node->adj.end()) { // if all seen, move back
-                path.pop();
-            }
         }
-        seen.clear();
-        cout << endl;
     }
     
     // DFS Recursive
     void DFS_recursive(Node *current_node) {
         Node::adj_list::iterator adj_itr;
+        current_node->seen=true;
+        
+        cout << (current_node)->getVal() << " ";
         
         for(adj_itr=current_node->adj.begin(); adj_itr!=current_node->adj.end(); adj_itr++) {
-            Vmap::iterator seen_itr = find(seen.begin(), seen.end(), *adj_itr); // search adj in seen
-            
-            if(seen_itr==seen.end()) { // if adj Node not in seen
-                cout << (*adj_itr)->getVal() << " ";
-                seen.push_back(*adj_itr); // add to seen
+            if((*adj_itr)->seen==false)  // if adj Node not in seen
                 DFS_recursive(*adj_itr);
-            }
         }
     }
     
     // BFS
+    void BFS(Node *v) {
+        cout << "\nBFS: ";
+        vector<Node*> path;
+        Node::adj_list::iterator adj_itr;
+        Node* current_node =nullptr;
+    
+        path.push_back(v);
+        cout << v->getVal() << " ";
+        
+        while(!path.empty()) {
+            current_node = path.front();
+            path.erase(path.begin());
+            
+            for(adj_itr=current_node->adj.begin(); adj_itr!=current_node->adj.end(); adj_itr++) {
+                if((*adj_itr)->seen==false) {
+                    cout << (*adj_itr)->getVal() << " ";
+                    (*adj_itr)->seen=true;
+                    path.push_back(*adj_itr);
+                }
+                
+            }
+
+        }
+    }
     
 };
 
