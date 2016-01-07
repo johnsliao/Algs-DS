@@ -34,6 +34,8 @@ Each implementation is done in Xcode playground. To view code, either:
 
 [Graphs](Data%20Structures/graphs/graphs)
 
+[Heaps](Data%20Structures/heap/heap)
+
 <h2> Misc </h3>
 
 [Templates] (/Misc/templates/templates)
