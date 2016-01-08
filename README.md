@@ -36,6 +36,8 @@ Each implementation is done in Xcode playground. To view code, either:
 
 [Heaps](Data%20Structures/heap/heap)
 
+[Doubly Linked Lists](Data%20Structures/DoublyLinkedList/DoublyLinkedList)
+
 <h2> Misc </h3>
 
 [Templates] (/Misc/templates/templates)
