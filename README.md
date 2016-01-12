@@ -38,6 +38,8 @@ Each implementation is done in Xcode playground. To view code, either:
 
 [Doubly Linked Lists](Data%20Structures/DoublyLinkedList/DoublyLinkedList)
 
+[AVL Tree] (soon)
+
 <h2> Misc </h3>
 
 [Templates] (/Misc/templates/templates)
