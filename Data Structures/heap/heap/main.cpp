@@ -61,10 +61,55 @@ public:
         }
     }
     
+    void deleteMin() {
+        if (heapSize == 0) {
+            throw string("Heap empty");
+        }
+        else {
+            data[0] = data[heapSize-1];
+            heapSize--;
+            siftDown(0);
+        }
+    }
+    
+    void siftDown(int nodeIndex) {
+        int leftChildIndex = getLeftChild(nodeIndex);
+        int rightChildIndex = getRightChild(nodeIndex);
+        int minIndex = -1;
+        int tmp = -1;
+        
+        // Disqualify leaf nodes
+        if (leftChildIndex >= heapSize) {
+            return;
+        }
+        
+        if (rightChildIndex >= heapSize) {
+            return;
+        }
+        
+        // Find minimum of children
+        if (data[leftChildIndex] < data[rightChildIndex]) {
+            minIndex = leftChildIndex;
+        }
+        else {
+            minIndex = rightChildIndex;
+        }
+        
+        // Check if parent breaks heap property
+        if (data[nodeIndex] > data[minIndex]) {
+            tmp = data[minIndex];
+            data[minIndex] = data[nodeIndex];
+            data[nodeIndex] = tmp;
+            siftDown(minIndex);
+        }
+        
+    }
+    
     void print() {
         for (int k = 0; k < heapSize; k++) {
             cout << data[k] << " ";
         }
+        cout << endl;
     }
     
     void insert(int v) {
@@ -93,7 +138,10 @@ int main(int argc, const char * argv[]) {
     H.insert(5);
     H.insert(9);
     H.insert(8);
-    H.insert(-2);
+    
+    H.print();
+    
+    H.deleteMin();
     
     H.print();
     
